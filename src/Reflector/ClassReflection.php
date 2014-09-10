@@ -73,8 +73,7 @@ class ClassReflection
 
     public function getReflectedMethod($methodName)
     {
-        // if it exists..
-        return $this->methods[$methodName];
+        return (isset($this->methods[$methodName])) ? $this->methods[$methodName] : null;
     }
 
     // get method args
@@ -117,9 +116,12 @@ class ClassReflection
         $methodSig = $method->getParameters();
 
         foreach ($methodSig as $key => $param) {
-            $methodParams[$key] = $userArgs[$key];
-            if ($param->isPassedByReference()) {
-                $methodParams[$key] = &$userArgs[$key];
+            $methodParams[$key] = null;
+            if (isset($methodParams[$key])) {
+                $methodParams[$key] = $userArgs[$key];
+                if ($param->isPassedByReference()) {
+                    $methodParams[$key] = &$userArgs[$key];
+                }
             }
         }
 

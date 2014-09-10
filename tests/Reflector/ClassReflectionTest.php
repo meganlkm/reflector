@@ -19,8 +19,8 @@ class ClassReflectionTest extends PHPUnit_Framework_TestCase
         $cr = new ClassReflection('My\Tests\Reflector\Mocks\MyTestClass');
         $this->assertInstanceOf('My\Reflector\ClassReflection', $cr);
 
-        // $cr->classInit(array('myclassvar', array('param1', 'param2')));
-        // $this->assertInstanceOf('My\Tests\Reflector\Mocks\MyTestClass', $cr->getClassInstance());
+        $cr->classInit(array('myclassvar', array('param1', 'param2')));
+        $this->assertInstanceOf('My\Tests\Reflector\Mocks\MyTestClass', $cr->getClassInstance());
     }
 
     // public function testGetters()
