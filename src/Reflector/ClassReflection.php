@@ -44,6 +44,11 @@ class ClassReflection
         $this->className = $className;
     }
 
+    public function getClassName()
+    {
+        return $this->className;
+    }
+
     public function callMethod($methodName, $params = array())
     {
         $this->setNewMethod($methodName);
@@ -51,11 +56,10 @@ class ClassReflection
         return $this->invoke($methodName);
     }
 
-    public function setNewMethod($methodName)
+    public function setNewMethod($methodName, $params = array())
     {
         $this->methods[$methodName] = $this->reflectMethod($methodName);
-        // set defaults
-        $this->setMethodParams($this->getReflectedMethod($methodName), array());
+        $this->setMethodParams($this->getReflectedMethod($methodName), $params);
     }
 
     protected function reflectClass()
@@ -117,7 +121,7 @@ class ClassReflection
 
         foreach ($methodSig as $key => $param) {
             $methodParams[$key] = null;
-            if (isset($methodParams[$key])) {
+            if (isset($userArgs[$key])) {
                 $methodParams[$key] = $userArgs[$key];
                 if ($param->isPassedByReference()) {
                     $methodParams[$key] = &$userArgs[$key];

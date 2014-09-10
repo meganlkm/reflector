@@ -4,37 +4,37 @@ namespace My\Tests\Reflector\Mocks;
 
 class MyTestClass
 {
-    protected $className;
-    protected $params;
+    protected $strParam1;
+    protected $arrParam2;
 
-    public function __construct($className = '', $params = array())
+    public function __construct($strParam1 = '', $arrParam2 = array())
     {
-        $this->setClassName($className);
-        $this->setParams($params);
+        $this->setStrParam1($strParam1);
+        $this->setArrParam2($arrParam2);
     }
 
-    public static function newInstance($className = '', $params = array())
+    public static function newInstance($strParam1 = '', $arrParam2 = array())
     {
-        return new self($className, $params);
+        return new self($strParam1, $arrParam2);
     }
 
-    public function setClassName($className = '')
+    public function setStrParam1($strParam1 = '')
     {
-        $this->className = $className;
+        $this->strParam1 = $strParam1;
     }
 
-    public function getClassName()
+    public function getStrParam1()
     {
-        return $this->className;
+        return $this->strParam1;
     }
 
-    public function setParams($params = array())
+    public function setArrParam2($arrParam2 = array())
     {
-        $this->params = $params;
+        $this->arrParam2 = $arrParam2;
     }
 
-    public function getParams()
+    public function getArrParam2()
     {
-        return $this->params;
+        return $this->arrParam2;
     }
 }
