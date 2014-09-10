@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         bootstrap="./tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="Reflector Test Suite">
+            <directory>./tests/</directory>
+            <exclude>./tests/mocks/</exclude>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="tap" target="php://stdout" />
+    </logging>
+    <ini name="display_errors" value="On"/>
+</phpunit>
