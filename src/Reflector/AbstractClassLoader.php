@@ -17,7 +17,7 @@ use My\Reflector\FileLoader as FileLoader;
  *
  * @category   Class Loading
  * @package    My
- * @author     Megan <megan.lkm@gmail.com>
+ * @author     Megan <megan@devstuff.io>
  * @license    http://opensource.org/licenses/MIT
  * @link       devstuff.io
  */

@@ -9,7 +9,7 @@ namespace My\Reflector;
  * PHP version 5
  *
  * @package    My
- * @author     Megan <megan.lkm@gmail.com>
+ * @author     Megan <megan@devstuff.io>
  * @license    http://opensource.org/licenses/MIT
  * @link       devstuff.io
  */
