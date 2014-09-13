@@ -9,7 +9,7 @@ namespace My\Reflector;
  *
  * @category   Class File Loading
  * @package    My
- * @author     Megan <megan.lkm@gmail.com>
+ * @author     Megan <megan@devstuff.io>
  * @license    http://opensource.org/licenses/MIT
  * @link       devstuff.io
  */
@@ -17,7 +17,6 @@ class FileLoader
 {
     public static function loadClassFile($className)
     {
-        // function lives in bin/??.php
-        // includeFile($className);
+        includeFile($className);
     }
 }
