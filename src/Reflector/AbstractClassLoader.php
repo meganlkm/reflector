@@ -23,15 +23,6 @@ use My\Reflector\FileLoader as FileLoader;
  */
 abstract class AbstractClassLoader extends AbstractClassFactory
 {
-    protected $reflected;
-    protected $iObject;
-
-    public function __construct()
-    {
-        $this->reflected = false;
-        $this->iObject = false;
-    }
-
     protected function createInstance($className = '', $args = array())
     {
         $this->loadFile($className);
@@ -46,45 +37,13 @@ abstract class AbstractClassLoader extends AbstractClassFactory
         return false;
     }
 
-    protected function reflectClass($className)
-    {
-        $this->reflected = new \ReflectionClass($className);
-    }
-
-    protected function classInit($args)
-    {
-        // $this->iObject = $this->reflected->newInstance($args);
-        $this->iObject = $this->reflected->newInstanceArgs($args);
-    }
-
     protected function loadFile($className)
     {
         FileLoader::loadClassFile($className);
 
         if (!class_exists($className)) {
-            $this->throwGenericException("Class {$className} does not exist");
-            return false;
+            throw new \Exception("Class {$className} does not exist");
         }
         return true;
-    }
-
-    public function getReflected()
-    {
-        return $this->reflected;
-    }
-
-    public function getObject()
-    {
-        return $this->iObject;
-    }
-
-    public function isInstantiated()
-    {
-        return (is_object($this->reflected) && is_object($this->iObject));
-    }
-
-    private function throwGenericException($msg)
-    {
-        throw new \Exception($msg);
     }
 }
